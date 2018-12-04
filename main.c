@@ -23,7 +23,7 @@ int run(char **args){
       if(!strcmp(args[i - 2], ">") && !strcmp(args[i - 4], "<")){
 	//args[i - 2] = NULL;
 	//redirect_out(redirect_in(args, i - 4), i - 2);
-	redirect_inout(args, i - 4, i - 2);
+	//redirect_inout(args, i - 4, i - 2);
       }
     }
     if (i >= 3){
