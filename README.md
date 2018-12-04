@@ -34,18 +34,12 @@
  
  * void redirect_out<p>
  *Input*: char ** args, int symbol<p>
-<<<<<<< HEAD
- *Output*: 
-=======
  *Output*: Void. Redirects standard out to standard in.
 
  
  
  * void redirect_in()<p>
  *Input*: char ** args, int symbol<p>
-<<<<<<< HEAD
- *Output*: 
-=======
  *Output*: Void. Redirects standard in to standard out.
 
  
