@@ -19,6 +19,13 @@ int run(char **args){
   if (!a){
     int i = 0;
     for (; args[i]; i++){}
+    if (i >= 5){
+      if(!strcmp(args[i - 2], ">") && !strcmp(args[i - 4], "<")){
+	//args[i - 2] = NULL;
+	//redirect_out(redirect_in(args, i - 4), i - 2);
+	redirect_inout(args, i - 4, i - 2);
+      }
+    }
     if (i >= 3){
       if (!strcmp(args[i - 2], "<")){
 	redirect_in(args, i-2);

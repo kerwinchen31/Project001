@@ -1,113 +1,59 @@
 #include <stdio.h>
-
 #include <stdlib.h>
-
 #include <string.h>
-
 #include <unistd.h>
-
 #include <errno.h>
-
 #include <sys/wait.h>
-
 #include <signal.h>
-
 #include <sys/stat.h>
-
 #include <fcntl.h>
-
 #include "func.h"
 
 char ** parse_args(char * linee) {
-
   char * line = malloc(strlen(linee) * sizeof(char));
-
   strncpy(line, linee, strlen(linee) - 1);
-
   line[strlen(linee)] = '\0';
-
   //printf("made line%sx\n", line);
-
   char * copy = malloc(strlen(line) * sizeof(char));
-
   int i, j = 0;
-
   while (i < strlen(line)) {
-
     if (line[i] == ' ') {
-
       if (i == 0) {
-
         while (line[i] == ' ') {
-
           i++;
-
         }
-
       }
-
       while (line[i + 1] == ' ') {
-
         i++;
-
       }
-
       while (line[i + 1] == ';') {
-
         i++;
-
       }
-
       if (line[i +1] == '\0') {
-
 	j++;
-
 	break;
-
       }
-
     }
-
     copy[j] = line[i];
-
     if (line[i] == ';') {
-
       while (line[i + 1] == ';') {
-
- i++;
-
+	i++;
       }
-
       while (line[i + 1] == ' ') {
-
         i++;
-
       }
-
       if (line[i + 1] == '\0') {
-
         j++;
-
         break;
-
       }
-
     }
-
     if (line[i + 1] == '\0') {
-
       j++;
-
       break;
-
     }
-
     i++;
-
     j++;
-
   }
-
   copy[j] = '\0';
 
   i = 0;
@@ -210,8 +156,62 @@ void redirect_in(char ** args, int symbol){
 
   execvp(args[0], args);
 
-  dup2(backup, 0);
+  //dup2(backup, 0);
 
-  close(fd);
+  //close(fd);
 
 }
+/*
+  void redirect_inout(char ** args, int in, int out){
+  
+  int backupin = dup(0);
+  int backupout = dup(1);
+  int fdin = open(args[in + 1], O_RDONLY, 777);
+  int fdout = open(args[out + 1], O_WRONLY | O_CREAT, 777);
+  dup2(fdin, 0);
+  dup2(fdout, 1);
+  args[in] = NULL;
+  printf("PLEASE WORK\n");
+  execvp(args[0], args);
+
+  dup2(backupin, 0);
+  dup2(backupout, 1);
+  close(fdin);
+  close(fdout);
+  }
+*/
+
+//void execp_pipe(char *arg1, char *arg2) {
+//   int fd[2];
+//   pipe(fd);
+//   int f1 = fork();
+ // if (f1) {
+//      int f2 = fork();
+//      if (f2) {
+//              close(fd[0]);
+//              close(fd[1]);
+//              int statusf1, statusf2;
+//              waitpid(f1, &statusf1, 0);
+//              waitpid(f2, &statusf2, 0);
+//              if (WIFEXITED(statusf1)) {
+//                      WEXITSTATUS(statusf1);
+//              }
+//              if (WIFEXITED(statusf2)) {
+//                      WEXITSTATUS(statusf2);
+//              }
+//      }
+//      else {
+//              close(fd[WRITE]);
+//              dup2(fd[READ], STDIN_FILENO);
+//              execvp(arg2[0], arg2);
+//              close(fd[READ]);
+//              exist(EXIT_SUCCESS);
+//      }
+//   }
+//   else {
+//      close(fd[READ]);
+//      dup2(fd[WRITE], STDOUT_FILENO);
+//      execvp(arg1[0], arg1);
+//      close(fd[WRITE]);
+//      exist(EXIT_SUCCESS);
+//}}

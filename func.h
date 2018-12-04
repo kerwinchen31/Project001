@@ -15,3 +15,5 @@ char ** space_args( char *line);
 void redirect_out(char ** args, int symbol);
 
 void redirect_in(char ** args, int symbol);
+
+//void redirect_inout(char ** args, int in, int out);
