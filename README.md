@@ -38,7 +38,7 @@
  *Output*: 
 =======
  *Output*: Void. Redirects standard out to standard in.
->>>>>>> 97cf0e3ed9fcaea7329224b854e5c46c9b5684ab
+
  
  
  * void redirect_in()<p>
@@ -47,7 +47,7 @@
  *Output*: 
 =======
  *Output*: Void. Redirects standard in to standard out.
->>>>>>> 97cf0e3ed9fcaea7329224b854e5c46c9b5684ab
+
  
  
 **main.c**
@@ -56,8 +56,5 @@
  * int run()<p>
  *Input*: char ** args <p>
  *Output*: int 
-<<<<<<< HEAD
     Is used by our main function to run individual commands parsed in.
-=======
-    Is used by our main function to run individual commands parsed in.
->>>>>>> 97cf0e3ed9fcaea7329224b854e5c46c9b5684ab
+
