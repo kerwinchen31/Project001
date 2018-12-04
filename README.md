@@ -17,7 +17,7 @@
 ### Bugs
 
  * It takes multiple exits to quit the shell, correlating with the amount of commands taken.
- * When using redirects, you should not space.
+ * When using redirects, you should use regular spacing.
  
 ### Files & Function Headers
 
