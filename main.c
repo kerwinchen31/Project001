@@ -9,6 +9,10 @@
 #include <fcntl.h>
 #include "func.h"
 
+//is given a pointer which points to components of one command
+//and attempts to execute the commands
+//arguments: char **args, which is taken from space_args()
+//returns: int
 int run(char **args){
   int a;
   if (!strcmp(args[0], "cd")){
@@ -44,7 +48,9 @@ int run(char **args){
   }
 }
       
-
+//prints directory path, and is always waiting for new functions
+//arguments: n/a
+//returns: n/a
 int main(){
   int keepRunning = 1;
   while(keepRunning){

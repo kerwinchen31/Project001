@@ -9,6 +9,12 @@
 #include <fcntl.h>
 #include "func.h"
 
+
+//is given a line from user input to fully parse and remove unnecessary
+//semicolons and spacing (keeps spacing for operators)
+//arguments: *linee, the line from user
+//returns: char**, each pointer points to separate command of user
+
 char ** parse_args(char * linee) {
   char * line = malloc(strlen(linee) * sizeof(char));
   strncpy(line, linee, strlen(linee) - 1);
@@ -96,6 +102,10 @@ char ** parse_args(char * linee) {
 
 }
 
+//after being given individual command, parses them into their components
+//arguments: char *line, a command
+//returns: char **, each pointer points to a component "word" of the command
+
 char ** space_args( char *line) {
 
   // I don't want to modify line.
@@ -124,6 +134,9 @@ char ** space_args( char *line) {
 
 }
 
+//redirects standard in to standard out
+//arguments: char **args, int symbol, we want to know what operator is being used on what commands
+//returns: void
 void redirect_out(char ** args, int symbol){
 
   int backup = dup(1);
@@ -143,7 +156,9 @@ void redirect_out(char ** args, int symbol){
 }
 
 
-
+//redirects standard out to standard in
+//arguments: same as previous
+//returns: n/a
 void redirect_in(char ** args, int symbol){
 
   int backup = dup(0);
